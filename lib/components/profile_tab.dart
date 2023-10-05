@@ -40,7 +40,14 @@ class _ProfileTabState extends State<ProfileTab>
           child: TabBarView(
             controller: _tabController,
             children: [
-              Container(color: Colors.red),
+              GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3,
+                ),
+                itemCount: 50,
+                itemBuilder: (context, index) =>
+                    Image.network("https://picsum.photos/id/${index}/200/200"),
+              ),
               Container(color: Colors.green),
             ],
           ),

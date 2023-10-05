@@ -17,13 +17,18 @@ class ProfilePage extends StatelessWidget {
         title: Text("Profile"),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          ProfileHeader(),
-          ProfileCountInfo(),
-          ProfileButtons(),
-          Expanded(child: ProfileTab()),
-        ],
+      body: NestedScrollView(
+        headerSliverBuilder: (context, innerBoxIsScrolled) {
+          return [
+            SliverList(
+                delegate: SliverChildListDelegate([
+              ProfileHeader(),
+              ProfileCountInfo(),
+              ProfileButtons(),
+            ]))
+          ];
+        },
+        body: Expanded(child: ProfileTab()),
       ),
     );
   }
